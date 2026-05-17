@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Portfolio — Marketing Digital</title>
+<meta name="description" content="Portfolio marketing digital — stratégie de contenu, SEO, copywriting et réseaux sociaux.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #222;
+    --accent: #c8f135;
+    --accent2: #a8d420;
+    --text: #f0f0e8;
+    --muted: #888;
+    --card: #161616;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3.5rem;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 2rem; }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero { padding: 1rem 0 4rem; }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,241,53,0.08);
+    border: 1px solid rgba(200,241,53,0.25);
+    color: var(--accent);
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+  }
+
+  .tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 7vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 .highlight {
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-desc {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0a;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--accent2); transform: scale(0.98); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: border-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: #555; }
+
+  /* ── STATS ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 3.5rem 0;
+  }
+
+  .stat {
+    background: var(--surface);
+    padding: 1.75rem 1rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 4rem; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── PROJETS ── */
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .project {
+    background: var(--card);
+    padding: 1.75rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .project:last-child { border-bottom: none; }
+  .project:hover { background: #1c1c1c; }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .project-type {
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(200,241,53,0.08);
+    border: 1px solid rgba(200,241,53,0.2);
+    padding: 4px 12px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .ptag {
+    font-size: 11px;
+    color: #666;
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* ── COMPÉTENCES ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-card:hover { border-color: #333; }
+
+  .skill-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(200,241,53,0.08);
+    border: 1px solid rgba(200,241,53,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    font-size: 19px;
+  }
+
+  .skill-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+  .skill-desc {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  /* ── À PROPOS ── */
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: rgba(200,241,53,0.08);
+    border: 1px solid rgba(200,241,53,0.25);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--accent);
+  }
+
+  .about-text p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .about-text p + p { margin-top: 10px; }
+
+  /* ── CONTACT ── */
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .contact-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 1.75rem;
+    font-weight: 300;
+  }
+
+  .contact-email {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px dashed rgba(200,241,53,0.3);
+    padding: 12px 28px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 1.75rem;
+    transition: background 0.2s;
+  }
+
+  .contact-email:hover { background: rgba(200,241,53,0.05); }
+
+  .socials { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+
+  .social-btn {
+    font-size: 12px;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 9px 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  .social-btn:hover { border-color: #555; color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  footer p { font-size: 12px; color: var(--muted); }
+
+  .footer-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 520px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .about-card { flex-direction: column; }
+    .project-top { flex-direction: column; gap: 8px; }
+    h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">ton<span>nom</span>.io</a>
+    <div class="nav-links">
+      <a href="#projets">Projets</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="tag">Disponible pour des missions</div>
+    <h1>
+      Marketing Digital
+      <span class="highlight">qui convertit.</span>
+    </h1>
+    <p class="hero-desc">
+      Passionné de marketing digital, de création de contenu et de stratégie de marque.
+      Je construis des présences en ligne qui font la différence.
+    </p>
+    <div class="cta-row">
+      <a href="#projets" class="btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Projets réalisés</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">5+</span>
+      <span class="stat-label">Compétences</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">17</span>
+      <span class="stat-label">Ans, France</span>
+    </div>
+  </div>
+
+  <!-- PROJETS -->
+  <section class="section" id="projets">
+    <div class="section-header">
+      <span class="section-num">01 —</span>
+      <span class="section-title">Projets & Réalisations</span>
+    </div>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">Stratégie Instagram — Marque fictive</span>
+          <span class="project-type">Réseaux sociaux</span>
+        </div>
+        <p class="project-desc">
+          Création d'une identité de marque complète et d'un plan de contenu sur 30 jours pour une marque de streetwear fictive.
+          Calendrier éditorial, tone of voice et visuels Canva inclus.
+        </p>
+        <div class="project-tags">
+          <span class="ptag">Instagram</span>
+          <span class="ptag">Canva</span>
+          <span class="ptag">Stratégie</span>
+          <span class="ptag">Contenu</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">Audit SEO — Blog personnel</span>
+          <span class="project-type">SEO</span>
+        </div>
+        <p class="project-desc">
+          Analyse complète d'un blog avec recommandations d'optimisation : mots-clés, structure des articles,
+          maillage interne et vitesse de chargement.
+        </p>
+        <div class="project-tags">
+          <span class="ptag">SEO</span>
+          <span class="ptag">Google Search Console</span>
+          <span class="ptag">Analyse</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">Séquence Email — E-commerce fictif</span>
+          <span class="project-type">Email marketing</span>
+        </div>
+        <p class="project-desc">
+          Séquence de 5 emails pour relancer des paniers abandonnés. Rédaction du copy,
+          structure des messages, call-to-action et segmentation de liste.
+        </p>
+        <div class="project-tags">
+          <span class="ptag">Copywriting</span>
+          <span class="ptag">Email</span>
+          <span class="ptag">Conversion</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">02 —</span>
+      <span class="section-title">Compétences</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">📱</div>
+        <div class="skill-name">Social Media</div>
+        <div class="skill-desc">Stratégie de contenu, calendrier éditorial, croissance organique sur Instagram et TikTok.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔍</div>
+        <div class="skill-name">SEO</div>
+        <div class="skill-desc">Recherche de mots-clés, optimisation on-page, analyse de trafic et audit de site.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">✍️</div>
+        <div class="skill-name">Copywriting</div>
+        <div class="skill-desc">Textes qui convertissent — emails, pages de vente, posts réseaux sociaux.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">Création visuelle</div>
+        <div class="skill-desc">Visuels pour réseaux sociaux, identité de marque, supports de communication sur Canva.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="section" id="apropos">
+    <div class="section-header">
+      <span class="section-num">03 —</span>
+      <span class="section-title">À propos</span>
+    </div>
+    <div class="about-card">
+      <div class="avatar">TN</div>
+      <div class="about-text">
+        <p>
+          Passionné de marketing digital depuis mes 15 ans, je me forme chaque jour à travers des projets concrets,
+          des formations en ligne et une veille active sur les tendances du secteur.
+        </p>
+        <p>
+          Mon objectif : aider des marques et des créateurs à construire une présence en ligne efficace.
+          Disponible pour des missions, des collaborations ou des stages dès maintenant.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-header">
+      <span class="section-num">04 —</span>
+      <span class="section-title">Contact</span>
+    </div>
+    <div class="contact-card">
+      <h3>Travaillons ensemble</h3>
+      <p>Tu as un projet ? Une question ? Écris-moi directement.</p>
+      <a href="mailto:tonemail@gmail.com" class="contact-email">tonemail@gmail.com</a>
+      <div class="socials">
+        <a href="#" class="social-btn">LinkedIn</a>
+        <a href="#" class="social-btn">Instagram</a>
+        <a href="#" class="social-btn">TikTok</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><span class="footer-dot"></span>Disponible pour des missions</p>
+    <p>© 2025 — Ton Nom</p>
+  </footer>
+
+</div>
+</body>
+</html>
